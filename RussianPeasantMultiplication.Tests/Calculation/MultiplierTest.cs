@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using FluentAssertions;
 using RussianPeasantMultiplication.Calculation;
 using RussianPeasantMultiplication.Model;
@@ -79,6 +80,12 @@ namespace RussianPeasantMultiplication.Tests.Calculation {
                 .Should().Be(1);
             result.Steps[1].Right
                 .Should().Be(6);
+        }
+
+        [Fact]
+        public void Multiply_TerminatesForZeroInput() {
+            multiplier.ExecutionTimeOf(m => m.Multiply(0, 120))
+                .Should().BeLessThan(TimeSpan.FromMilliseconds(10));
         }
     }
 }

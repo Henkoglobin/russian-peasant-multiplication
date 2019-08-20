@@ -20,6 +20,11 @@ namespace RussianPeasantMultiplication.Calculation {
         }
 
         private IEnumerable<(int left, int right, bool includedInSum)> CalculateSteps(int a, int b) {
+            if (a == 0 || b == 0) {
+                yield return (a, b, false);
+                yield break;
+            }
+
             while (true) {
                 yield return (a, b, Math.Abs(a) % 2 == 1);
 
