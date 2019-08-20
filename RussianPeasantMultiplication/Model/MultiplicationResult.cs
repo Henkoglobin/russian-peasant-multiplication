@@ -1,9 +1,22 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace RussianPeasantMultiplication.Model
-{
+namespace RussianPeasantMultiplication.Model {
     public class MultiplicationResult {
-        public int Result { get; set; }
-        public List<(int left, int right, bool includedInSum)> Steps { get; set; }
+        public int LeftInput { get; }
+        public int RightInput { get; }
+        public int Result { get; }
+        public IReadOnlyList<MultiplicationStep> Steps { get; }
+
+        public MultiplicationResult(
+            int leftInput, 
+            int rightInput, 
+            int result, 
+            IReadOnlyList<MultiplicationStep> steps
+        ) {
+            LeftInput = leftInput;
+            RightInput = rightInput;
+            Result = result;
+            Steps = steps;
+        }
     }
 }
